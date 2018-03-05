@@ -164,6 +164,8 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
                     return;
                 }
                 prepareMediaPlayer();
+                if(listener!=null){
+                listener.onPlaying("PLAYING");}
                 onEvent(currentState != CURRENT_STATE_ERROR ? JCUserAction.ON_CLICK_START_ICON : JCUserAction.ON_CLICK_START_ERROR);
             } else if (currentState == CURRENT_STATE_PLAYING) {
                 onEvent(JCUserAction.ON_CLICK_PAUSE);
@@ -171,6 +173,8 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
                 JCMediaManager.instance().mediaPlayer.pause();
                 setUiWitStateAndScreen(CURRENT_STATE_PAUSE);
             } else if (currentState == CURRENT_STATE_PAUSE) {
+                if(listener!=null){
+                listener.onPlaying("PLAYING");}
                 onEvent(JCUserAction.ON_CLICK_RESUME);
                 JCMediaManager.instance().mediaPlayer.start();
                 setUiWitStateAndScreen(CURRENT_STATE_PLAYING);
@@ -943,5 +947,15 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
     }
 
     public abstract int getLayoutId();
+
+    private JCVideoPlayer.onPlaying listener;
+
+    public interface onPlaying{
+        void onPlaying(final String change);
+    }
+
+    public void setListener(JCVideoPlayer.onPlaying listener) {
+        this.listener = listener;
+    }
 
 }
