@@ -209,6 +209,8 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+                if(listener!=null){
+                    listener.onPlaying("PLAYING");}
                 startVideo();
                 WIFI_TIP_DIALOG_SHOWED = true;
             }
@@ -778,4 +780,14 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
         super.onCompletion();
         cancelDismissControlViewTimer();
     }
+    private JCVideoPlayerStandard.onPlayingStandard listener;
+
+    public interface onPlayingStandard{
+        void onPlaying(final String change);
+    }
+
+    public void setListenerStandard(JCVideoPlayerStandard.onPlayingStandard listener) {
+        this.listener = listener;
+    }
+
 }
