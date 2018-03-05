@@ -783,7 +783,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     private JCVideoPlayerStandard.onPlayingStandard listener;
 
     public interface onPlayingStandard{
-        void onPlaying(final String change);
+        void onPlayingStandard(final String change);
     }
 
     public void setListenerStandard(JCVideoPlayerStandard.onPlayingStandard listener) {
