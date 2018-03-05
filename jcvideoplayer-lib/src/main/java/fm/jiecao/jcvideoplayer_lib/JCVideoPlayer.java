@@ -195,6 +195,8 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
             }
         } else if (i == R.id.surface_container && currentState == CURRENT_STATE_ERROR) {
             Log.i(TAG, "onClick surfaceContainer State=Error [" + this.hashCode() + "] ");
+            if(listener!=null){
+                listener.onPlaying("PLAYING");}
             prepareMediaPlayer();
         }
     }
