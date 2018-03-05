@@ -210,7 +210,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 if(listener!=null){
-                    listener.onPlaying("PLAYING");}
+                    listener.onPlayingStandard("PLAYING");}
                 startVideo();
                 WIFI_TIP_DIALOG_SHOWED = true;
             }
