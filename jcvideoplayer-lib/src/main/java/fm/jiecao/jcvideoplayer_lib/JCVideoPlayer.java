@@ -180,6 +180,8 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
                 setUiWitStateAndScreen(CURRENT_STATE_PLAYING);
             } else if (currentState == CURRENT_STATE_AUTO_COMPLETE) {
                 onEvent(JCUserAction.ON_CLICK_START_AUTO_COMPLETE);
+                if(listener!=null){
+                    listener.onPlaying("PLAYING");}
                 prepareMediaPlayer();
             }
         } else if (i == R.id.fullscreen) {
@@ -202,6 +204,8 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
     }
 
     public void prepareMediaPlayer() {
+        if(listener!=null){
+            listener.onPlaying("PLAYING");}
         JCVideoPlayerManager.completeAll();
         Log.d(TAG, "prepareMediaPlayer [" + this.hashCode() + "] ");
         initTextureView();
